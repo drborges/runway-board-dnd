@@ -1,0 +1,16 @@
+.card {
+  display: flex;
+  border: 1px solid #DFE3E8;
+  border-radius: 4px;
+  transform: translateY(5px);
+  box-shadow: 0 0 0 rgba(196,205,213,0);
+  transition: box-shadow 0.3s ease,transform 0.3s ease;
+  cursor: pointer;
+  padding: 20px;
+  margin-bottom: 10px;
+
+  &:hover {
+    transform: translateY(0);
+    box-shadow: 2px 2px 5px rgba(196,205,213,100);
+  }
+}
