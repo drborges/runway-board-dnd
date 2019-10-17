@@ -12,9 +12,11 @@ import "./styles.css";
 const nextId = ((i = 0) => () => i++)();
 
 const initialTodos = [
-  { id: nextId(), description: "Learn React DnD", state: "todo" },
+  { id: nextId(), description: "Learn React DnD", state: "doing" },
   { id: nextId(), description: "Use React in Runway", state: "todo" },
-  { id: nextId(), description: "Spike React", state: "doing" }
+  { id: nextId(), description: "Learn React", state: "doing" },
+  { id: nextId(), description: "Spike on React DnD with hooks", state: "done" },
+  { id: nextId(), description: "Write specs for dnd spike", state: "todo" }
 ];
 
 const todosByState = (todos, state) => todos.filter(t => t.state === state);
