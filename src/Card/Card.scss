@@ -4,7 +4,7 @@
   border-radius: 4px;
   transform: translateY(5px);
   box-shadow: 0 0 0 rgba(196,205,213,0);
-  transition: box-shadow 0.3s ease,transform 0.3s ease;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
   cursor: pointer;
   padding: 20px;
   margin-bottom: 10px;
@@ -18,5 +18,9 @@
     text-align: left;
     font-size: 15px;
     color: #666;
+  }
+
+  &.dragging {
+    opacity: 0.2;
   }
 }
