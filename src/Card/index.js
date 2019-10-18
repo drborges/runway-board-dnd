@@ -25,11 +25,14 @@ const Card = ({ id, description, type, editing = false, onSave }) => {
   };
 
   const handleKeyDown = event => {
-    if (event.key === "Enter") handleSaveCard(event);
+    if (event.key === "Enter") {
+      handleSaveCard(event);
+    }
   };
 
   const css = classnames({
     card: true,
+    editing: isEditing,
     dragging
   });
 
@@ -38,10 +41,10 @@ const Card = ({ id, description, type, editing = false, onSave }) => {
       <div className={`header ${type}`} />
       <div className="body">
         {isEditing && (
-          <textArea
+          <textarea
             placeholder="What is this about?"
+            rows={5}
             {...input}
-            onBlur={handleSaveCard}
             onKeyDown={handleKeyDown}
           />
         )}

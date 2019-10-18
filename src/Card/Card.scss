@@ -14,7 +14,14 @@
     box-shadow: 2px 2px 5px rgba(196,205,213,100);
   }
 
+  &.editing {
+    transform: translateY(0);
+    box-shadow: 2px 2px 5px rgba(196,205,213,100);
+    border: thin dashed #666;
+  }
+
   .body {
+    flex-grow: 1;
     text-align: left;
     font-size: 15px;
     color: #666;
@@ -24,10 +31,12 @@
     opacity: 0.2;
   }
 
-  textArea {
+  textarea {
     border: 0;
-    font-size: 20px;
+    font-size: 15px;
     outline: none;
     width: 100%;
+    height: 100%;
+    resize: none;
   }
 }
