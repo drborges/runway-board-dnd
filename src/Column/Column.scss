@@ -22,4 +22,8 @@
   &.drag-over {
     background-color: #e6ffe6;
   }
+
+  &.droppable {
+    border: thin dashed #ccc;
+  }
 }
