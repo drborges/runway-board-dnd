@@ -12,6 +12,7 @@
 
   & > .header {
     margin: 20px;
+    height: 60px;
     font-size: 25px;
     color: #666;
 
@@ -20,7 +21,8 @@
       text-transform: uppercase;
     }
 
-    .count {
+    .count,
+    .max-wip {
       font-size: 15px;
     }
   }

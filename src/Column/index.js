@@ -8,25 +8,27 @@ import "./Column.scss";
 
 const Column = ({
   accept,
-  items,
+  items = [],
   type,
   title,
   onDrop,
   onAddCard,
-  onSaveCard
+  onSaveCard,
+  maxWip = 3
 }) => {
+  const withinWipLimit = items.length < maxWip;
   const [{ isOver, canDrop }, drop] = useDrop({
     accept,
-    drop: onDrop,
+    drop: withinWipLimit ? onDrop : () => {},
     collect: monitor => ({
       isOver: monitor.isOver(),
-      canDrop: monitor.canDrop()
+      canDrop: withinWipLimit && monitor.canDrop()
     })
   });
 
   const css = classnames({
     column: true,
-    "drag-over": isOver,
+    "drag-over": isOver && canDrop,
     droppable: canDrop
   });
 
@@ -35,6 +37,7 @@ const Column = ({
       <div className="header">
         <span className="title">{title}</span>
         <span className="count">({items.length})</span>
+        {type === "doing" && <div className="max-wip">Max WIP: {maxWip}</div>}
       </div>
 
       <button onClick={() => onAddCard(type)}>New Card</button>
