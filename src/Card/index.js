@@ -3,9 +3,9 @@ import { useDrag } from "react-dnd";
 
 import "./Card.scss";
 
-const Card = ({ id, description, state }) => {
+const Card = ({ id, description, type }) => {
   const [{ opacity }, drag] = useDrag({
-    item: { id, description, type: state },
+    item: { id, description, type },
     collect: monitor => ({
       opacity: monitor.isDragging() ? 0.2 : 1
     })
@@ -13,7 +13,7 @@ const Card = ({ id, description, state }) => {
 
   return (
     <div ref={drag} className="card" style={{ opacity }}>
-      <div className={`header ${state}`} />
+      <div className={`header ${type}`} />
       <div className="body">{description}</div>
     </div>
   );

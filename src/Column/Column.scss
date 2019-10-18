@@ -8,11 +8,16 @@
   background: #FFF;
   box-shadow: 0 2px 12px rgba(196,205,213,0.4);
   border-radius: 4px;
+  border: thin solid #fff;
 
   & > .header {
     margin: 20px;
     font-size: 25px;
     color: #666;
+
+    .title {
+      padding: 5px;
+    }
 
     .count {
       font-size: 15px;
