@@ -3,12 +3,12 @@ import ReactDOM from "react-dom";
 import { DndProvider } from "react-dnd";
 import HTML5Backend from "react-dnd-html5-backend";
 
+import { nextId } from "./helpers";
 import DraggableItems from "./DraggableItems";
 import Board from "./Board";
 
 import "./styles.css";
 
-const nextId = ((i = 0) => () => i++)();
 const initialTodos = [
   { id: nextId(), description: "Learn React DnD", type: "doing" },
   { id: nextId(), description: "Use React in Runway", type: "todo" },

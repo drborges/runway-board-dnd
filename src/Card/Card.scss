@@ -23,4 +23,11 @@
   &.dragging {
     opacity: 0.2;
   }
+
+  textArea {
+    border: 0;
+    font-size: 20px;
+    outline: none;
+    width: 100%;
+  }
 }

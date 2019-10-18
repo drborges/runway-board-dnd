@@ -6,7 +6,15 @@ import Card from "../Card";
 
 import "./Column.scss";
 
-const Column = ({ accept, items, title, onDrop }) => {
+const Column = ({
+  accept,
+  items,
+  type,
+  title,
+  onDrop,
+  onAddCard,
+  onSaveCard
+}) => {
   const [{ isOver, canDrop }, drop] = useDrop({
     accept,
     drop: onDrop,
@@ -29,9 +37,11 @@ const Column = ({ accept, items, title, onDrop }) => {
         <span className="count">({items.length})</span>
       </div>
 
+      <button onClick={() => onAddCard(type)}>New Card</button>
+
       <div className="body">
         {items.map(item => (
-          <Card key={item.id} {...item} />
+          <Card key={item.id} {...item} onSave={onSaveCard} />
         ))}
       </div>
     </div>

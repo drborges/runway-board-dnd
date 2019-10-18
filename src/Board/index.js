@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from "react";
 
+import { nextId } from "../helpers";
 import Column from "../Column";
 
 import "./Board.scss";
@@ -17,15 +18,40 @@ function Board({ initialColumns, initialItems }) {
     [items]
   );
 
+  const handleAddCard = useCallback(
+    type => {
+      setItems([
+        ...items,
+        { id: nextId(), description: "", type, editing: true }
+      ]);
+    },
+    [items]
+  );
+
+  const handleSaveCard = useCallback(
+    ({ id, description, type }) => {
+      const updatedItem = { id, description, type };
+      const updatedItemIndex = items.findIndex(item => item.id === id);
+
+      setItems([
+        ...items.slice(0, updatedItemIndex),
+        updatedItem,
+        ...items.slice(updatedItemIndex + 1)
+      ]);
+    },
+    [items]
+  );
+
   return (
     <div className="Board">
       {initialColumns.map(column => (
         <Column
           key={column.id}
-          accept={column.accept}
-          title={column.title}
+          {...column}
           items={itemsByType(items, column.type)}
           onDrop={item => handleDrop(item, column.type)}
+          onAddCard={handleAddCard}
+          onSaveCard={handleSaveCard}
         />
       ))}
     </div>
