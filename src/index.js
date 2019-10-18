@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { DndProvider } from "react-dnd";
 import HTML5Backend from "react-dnd-html5-backend";
 
+import DraggableItems from "./DraggableItems";
 import Board from "./Board";
 
 import "./styles.css";
@@ -16,10 +17,31 @@ const initialTodos = [
   { id: nextId(), description: "Write specs for dnd spike", type: "todo" }
 ];
 
+const initialColumns = [
+  {
+    id: nextId(),
+    type: "todo",
+    title: "Todo",
+    accept: [DraggableItems.DOING, DraggableItems.DONE]
+  },
+  {
+    id: nextId(),
+    type: "doing",
+    title: "Doing",
+    accept: [DraggableItems.TODO, DraggableItems.DONE]
+  },
+  {
+    id: nextId(),
+    type: "done",
+    title: "Done",
+    accept: [DraggableItems.TODO, DraggableItems.DOING]
+  }
+];
+
 const App = () => {
   return (
     <DndProvider backend={HTML5Backend}>
-      <Board initialItems={initialTodos} />
+      <Board initialColumns={initialColumns} initialItems={initialTodos} />
     </DndProvider>
   );
 };
